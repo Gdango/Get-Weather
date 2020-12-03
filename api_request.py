@@ -1,8 +1,14 @@
 import requests
-import url_call
+import access
+import json
 
-url = url_call.url()
+
+url = "http://api.openweathermap.org/data/2.5/forecast?q=Commerce,California&appid="+access.access_code()
 
 response = requests.get(url)
-print(response.json())
+Data = response.json()
+
+with open('data.txt', 'w') as outfile:
+    json.dump(Data, outfile)
+
 
