@@ -1,9 +1,6 @@
 import json
 from datetime import datetime
 
-with open('Data.txt') as json_file:
-    Data = json.load(json_file)
-
 def Will_Rain(Data):
 
     weather_list = Data['list']
@@ -12,16 +9,16 @@ def Will_Rain(Data):
 
     for i in range(0, len(weather_list)-1):
         try:
-            if weather_list[i]['weather'][0]['main'] != 'Rain':
-                unix_time = weather_list[i]['dt']
+            if weather_list[i]['weather'][0]['main'] == 'Rain':
+                '''unix_time = weather_list[i]['dt']
                 date_time.append(datetime.fromtimestamp(unix_time).strftime('%Y-%m-%d %H:%M:%S'))
-                forecast.append(weather_list[i]['weather'][0]['main'])
+                forecast.append(weather_list[i]['weather'][0]['main'])'''
+                return True
         except KeyError:
             continue
 
-    return date_time, forecast
+    return False
 
-print(Will_Rain(Data)[0])
 
 
 
