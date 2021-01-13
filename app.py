@@ -1,13 +1,12 @@
-import extract_data
-from flask import Flask
 import os
 import json
 import sms_send
+import api_request
+import extract_data
 
-with open('Data.txt') as json_file:
-    Data = json.load(json_file)
+def main():
+    Data = api_request.Data()
 
-if extract_data.Will_Rain(Data) == True:
-    sms_send.sms_send("It will rain within the next 4 days!")
-else:
-    print("It will not rain!")
+    if extract_data.Will_Rain(Data) == True:
+        sms_send.sms_send("It will rain within the next 4 days!")
+    

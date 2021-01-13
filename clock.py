@@ -1,9 +1,11 @@
-from apscheduler.schedulers.background import BackgroundScheduler
+from apscheduler.schedulers.blocking import BlockingScheduler
+import api_request
+import app
 
-sched = BackgroundScheduler()
+sched = BlockingScheduler()
 
-@sched.scheduled_job('interval', minutes=1440)
-def timed_job():
-    print("This task is scheduled")
+@sched.scheduled_job('cron', month='*', day='*', hour=21, minute=35)
+def scheduled_job:
+    app.main()
 
-@sched.scheduled_job('cron', day_of_week='')
+sched.start()
