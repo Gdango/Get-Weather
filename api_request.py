@@ -1,5 +1,5 @@
 import requests
-import OS
+import os
 import json
 
 def Data():
